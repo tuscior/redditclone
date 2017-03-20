@@ -1,0 +1,68 @@
+li {
+	list-style: none;
+}
+
+.postView {
+	width: 80%;
+	margin: auto;
+	margin-top: 65px;
+}
+.post section p {
+	text-align: justify;
+	text-justify: inter-word;	
+}
+.post section h2 {
+	text-align: center;
+}
+.postLine{
+	content: "";
+	display:block;
+	width: 30%;
+	margin: 50px auto 0 auto;
+	border-bottom: 1px dotted #454545;
+}
+.comments {
+	margin-top: 10%;
+	display: block;
+}
+.comments h4 {
+	text-align: center;
+}
+form {
+	text-align: center;
+}
+.comments input[name="comment"]{
+	margin: auto;
+	width: 50%;
+	margin-bottom: 30px;
+}
+.postAuthor strong{
+	color:#a90606;
+}
+.points {
+	width: 5%;
+	float:left;
+}
+.points span {
+	display: block;
+	text-align: center;
+}
+.commentView {
+width: 95%;
+float: right;
+margin: auto;
+height: 100%;
+margin-top: 10px;
+}
+.commentList {
+margin-top: 1%;
+min-height: 75px;
+float: left;
+width: 100%;
+}
+.commentList:after {
+	clear: both;
+	display: block;
+	content: "";
+	width: 100%;
+}

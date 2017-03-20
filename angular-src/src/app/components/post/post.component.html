@@ -1,0 +1,28 @@
+<div *ngIf="post" class="postView">
+<section class="postContent">
+<h2>{{post[0][0].title}}</h2>
+<p>{{post[0][0].content}}</p>
+</section>
+<div class="postLine"></div>
+<section class="comments"><h4>Comments</h4>
+<form (submit)="onCommentSubmit()">
+	<input type="text" [(ngModel)]="comment" name="comment" placeholder="Add comment...">
+	<input type="submit" name="submit" class="btn btn-default">
+</form>
+	<div *ngFor="let comment of post[1]" class="commentList">		
+		<div class="commentView">	
+		<li class="postAuthor">
+		<strong> {{comment.authorUsername}}
+		</strong> <i>{{comment.date}}</i>
+		</li>
+		<li>{{comment.comment}}</li>
+		</div>
+		<div class="points">
+		<span (click)="incrementVotes(comment)">▲</span>
+		<span>{{comment.votes}}</span>		
+		<span (click)="decrementVotes(comment)">▼</span>
+		</div>
+	</div>
+<div class="lastLine"></div>
+</section>
+</div>

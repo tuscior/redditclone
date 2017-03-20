@@ -1,0 +1,16 @@
+<div class="addPosts">
+<a class="btn btn-default" [routerLink]='["/newpost"]'>Add Post</a>
+<a class="btn btn-default" [routerLink]='["/newlink"]'>Add Link</a>
+</div>
+<div *ngFor="let post of posts" class="postsView">
+	<div class="votes">
+	<span class="arrows" (click)="incrementVotes(post)">▲</span>
+	<span>{{post.votes}}</span>
+	<span class="arrows" (click)="decrementVotes(post)">▼</span>
+	</div>
+  <div class="post"><a *ngIf="post.link" href={{post.link}} (click)="onSelectPost(post)" target="_blank"><h4>{{post.title}}</h4></a>
+  <a *ngIf="!post.link" (click)="onSelectPost(post)"><h4>{{post.title}}</h4></a>
+  <div><h6> added {{post.date}} by <span class="author">{{post.author}}</span></h6></div>
+  <div><h6>{{post.comments}} comments</h6></div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div *ngIf="profile">
+<h1>
+{{profile[0][0].username}}
+</h1>
+
+<div>
+<ul *ngFor="let post of profile[1]">
+<li>{{post.title}}<a class="btn btn-danger" (click)="onDeleteClick(post._id)">delete</a></li>
+
+</ul>
+</div>
+</div>
