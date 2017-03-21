@@ -36,7 +36,7 @@ form {
 	width: 50%;
 	margin-bottom: 30px;
 }
-.postAuthor strong{
+.list-group-item-heading{
 	color:#a90606;
 }
 .points {
