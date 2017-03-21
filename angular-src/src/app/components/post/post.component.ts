@@ -28,6 +28,10 @@ comment: string;
        }); 	
   }
   onCommentSubmit(){
+  if(!this.authService.loggedIn()){
+    this.flashMessage.show('Log in to add comment', {cssClass: 'alert-success', timeout: 3000});
+    return false;
+  }
   const author = this.authService.getUsername();
   const comment = {
   authorUsername: author,
@@ -43,6 +47,10 @@ comment: string;
   }
 decrementVotes(comment){
 	let userID = this.authService.getID();
+  if(!this.authService.loggedIn()){
+    this.flashMessage.show('Log in to add vote', {cssClass: 'alert-success', timeout: 3000});
+    return false;
+  }
 	if(this.validateService.alreadyVoted(comment, userID)){
 	this.flashMessage.show('Already voted', {cssClass: 'alert-success', timeout: 3000});
 	return false;
@@ -57,6 +65,10 @@ decrementVotes(comment){
 }
 incrementVotes(comment){
 	let userID = this.authService.getID();
+  if(!this.authService.loggedIn()){
+    this.flashMessage.show('Log in to add vote', {cssClass: 'alert-success', timeout: 3000});
+    return false;
+  }
 	if(this.validateService.alreadyVoted(comment,userID)){
 	this.flashMessage.show('Already voted', {cssClass: 'alert-success', timeout: 3000});
 	return false;

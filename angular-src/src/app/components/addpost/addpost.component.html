@@ -1,5 +1,5 @@
 <form (submit)="addPost()">
-<div class="form-group"><input type="text" placeholder="title" [(ngModel)]="title" name="title"></div>
-<div class="form-group"><textarea type="text" placeholder = "Content" (change)="doTextAreaValueChange($event)" name="content">{{textAreaValue}}</textarea></div>
-<button type="submit" class="btn btn-default">Add</button>
+<div class="form-group"><input type="text" class="form-control" placeholder="title" [(ngModel)]="title" name="title"></div>
+<div class="form-group"><textarea type="text" class="form-control" placeholder = "Content" (change)="doTextAreaValueChange($event)" name="content">{{textAreaValue}}</textarea></div>
+<div class="form-group"><button type="submit" class="btn btn-default">Add</button></div>
 </form>

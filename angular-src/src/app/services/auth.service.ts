@@ -34,11 +34,7 @@ getProfile(){
 	return this.http.get('profile/'+profile.id).map(res => res.json());
 }
 loggedIn(){
-	let token = localStorage.getItem('id_token');
-	if(token){
-	return true;
-	}
-	else {return false}
+	return tokenNotExpired();
 }
 logout(){
 	this.authToken = null;

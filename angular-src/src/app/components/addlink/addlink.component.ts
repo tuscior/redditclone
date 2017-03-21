@@ -20,6 +20,10 @@ author: string;
   ngOnInit() {
   }
  addLink(){
+  if(!this.authService.loggedIn()){
+    this.flashMessage.show('Log in to add link', {cssClass: 'alert-success', timeout: 3000});
+    return false;
+  }
  this.author = this.authService.getUsername();
  this.user = this.authService.getID();
  const link = {

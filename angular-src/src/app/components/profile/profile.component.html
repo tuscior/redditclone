@@ -1,12 +1,6 @@
 <div *ngIf="profile">
-<h1>
-{{profile[0][0].username}}
-</h1>
-
-<div>
-<ul *ngFor="let post of profile[1]">
-<li>{{post.title}}<a class="btn btn-danger" (click)="onDeleteClick(post._id)">delete</a></li>
-
-</ul>
-</div>
-</div>
+	<h2 class="page-header">{{profile[0][0].username}}</h2>
+	<ul class="list-group" *ngFor="let post of profile[1]">
+		<li class="list-group-item">{{post.title}}<a class="btn btn-danger" (click)="onDeleteClick(post._id)">delete</a></li>
+	</ul>
+</div>	

@@ -27,6 +27,10 @@ posts: any;
 post: any;
 
 incrementVotes(post){
+	if(!this.authService.loggedIn()){
+		this.flashMessage.show('Log in to add vote', {cssClass: 'alert-success', timeout: 3000});
+		return false;
+	}
 	let userID = this.authService.getID();
 	if(this.validateService.alreadyVoted(post,userID)){
 	this.flashMessage.show('Already voted', {cssClass: 'alert-success', timeout: 3000});
@@ -41,6 +45,10 @@ incrementVotes(post){
 	});
 }
 decrementVotes(post){
+	if(!this.authService.loggedIn()){
+		this.flashMessage.show('Log in to add vote', {cssClass: 'alert-success', timeout: 3000});
+		return false;
+	}
 	let userID = this.authService.getID();
 	if(this.validateService.alreadyVoted(post, userID)){
 	this.flashMessage.show('Already voted', {cssClass: 'alert-success', timeout: 3000});

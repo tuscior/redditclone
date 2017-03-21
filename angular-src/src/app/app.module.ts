@@ -16,6 +16,9 @@ import {AuthService} from './services/auth.service';
 import {ValidateService} from './services/validate.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { PostComponent } from './components/post/post.component';
+import {AuthGuard} from './guard/auth.guard';
+
+
 
 const appRoutes: Routes = [
 {path: '', component: HomeComponent},
@@ -23,7 +26,7 @@ const appRoutes: Routes = [
 {path: 'newpost', component: AddpostComponent},
 {path: 'register', component: RegisterComponent},
 {path: 'login', component: LoginComponent},
-{path: 'profile', component: ProfileComponent},
+{path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
 {path: 'newlink', component: AddlinkComponent}
 ];
 
@@ -46,7 +49,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [PostService, AuthService, ValidateService],
+  providers: [PostService, AuthService, ValidateService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

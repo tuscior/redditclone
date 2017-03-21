@@ -24,6 +24,10 @@ author: string;
   ngOnInit() {
   }
 addPost(){
+  if(!this.authService.loggedIn()){
+    this.flashMessage.show('Log in to add post', {cssClass: 'alert-success', timeout: 3000});
+    return false;
+  }
   this.user = this.authService.getID();
   this.author = this.authService.getUsername();
   const post = {
