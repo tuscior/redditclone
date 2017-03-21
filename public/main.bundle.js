@@ -697,11 +697,11 @@ var PostComponent = (function () {
     };
     PostComponent.prototype.decrementVotes = function (comment) {
         var _this = this;
-        var userID = this.authService.getID();
         if (!this.authService.loggedIn()) {
             this.flashMessage.show('Log in to add vote', { cssClass: 'alert-success', timeout: 3000 });
             return false;
         }
+        var userID = this.authService.getID();
         if (this.validateService.alreadyVoted(comment, userID)) {
             this.flashMessage.show('Already voted', { cssClass: 'alert-success', timeout: 3000 });
             return false;
@@ -715,11 +715,11 @@ var PostComponent = (function () {
     };
     PostComponent.prototype.incrementVotes = function (comment) {
         var _this = this;
-        var userID = this.authService.getID();
         if (!this.authService.loggedIn()) {
             this.flashMessage.show('Log in to add vote', { cssClass: 'alert-success', timeout: 3000 });
             return false;
         }
+        var userID = this.authService.getID();
         if (this.validateService.alreadyVoted(comment, userID)) {
             this.flashMessage.show('Already voted', { cssClass: 'alert-success', timeout: 3000 });
             return false;
@@ -1064,7 +1064,7 @@ module.exports = ""
 /***/ 684:
 /***/ (function(module, exports) {
 
-module.exports = "li {\r\n\tlist-style: none;\r\n}\r\n\r\n.postView {\r\n\twidth: 80%;\r\n\tmargin: auto;\r\n\tmargin-top: 65px;\r\n}\r\n.post section p {\r\n\ttext-align: justify;\r\n\ttext-justify: inter-word;\t\r\n}\r\n.post section h2 {\r\n\ttext-align: center;\r\n}\r\n.postLine{\r\n\tcontent: \"\";\r\n\tdisplay:block;\r\n\twidth: 30%;\r\n\tmargin: 50px auto 0 auto;\r\n\tborder-bottom: 1px dotted #454545;\r\n}\r\n.comments {\r\n\tmargin-top: 10%;\r\n\tdisplay: block;\r\n}\r\n.comments h4 {\r\n\ttext-align: center;\r\n}\r\nform {\r\n\ttext-align: center;\r\n}\r\n.comments input[name=\"comment\"]{\r\n\tmargin: auto;\r\n\twidth: 50%;\r\n\tmargin-bottom: 30px;\r\n}\r\n.list-group-item-heading{\r\n\tcolor:#a90606;\r\n}\r\n.points {\r\n\twidth: 5%;\r\n\tfloat:left;\r\n}\r\n.points span {\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n}\r\n.commentView {\r\nwidth: 95%;\r\nfloat: right;\r\nmargin: auto;\r\nheight: 100%;\r\nmargin-top: 10px;\r\n}\r\n.commentList {\r\nmargin-top: 1%;\r\nmin-height: 75px;\r\nfloat: left;\r\nwidth: 100%;\r\n}\r\n.commentList:after {\r\n\tclear: both;\r\n\tdisplay: block;\r\n\tcontent: \"\";\r\n\twidth: 100%;\r\n}"
+module.exports = "li {\r\n\tlist-style: none;\r\n}\r\n\r\n.postView {\r\n\twidth: 80%;\r\n\tmargin: auto;\r\n\tmargin-top: 65px;\r\n}\r\n.post section p {\r\n\ttext-align: justify;\r\n\ttext-justify: inter-word;\t\r\n}\r\n.post section h2 {\r\n\ttext-align: center;\r\n}\r\n.postLine{\r\n\tcontent: \"\";\r\n\tdisplay:block;\r\n\twidth: 30%;\r\n\tmargin: 50px auto 0 auto;\r\n\tborder-bottom: 1px dotted #454545;\r\n}\r\n.comments {\r\n\tmargin-top: 10%;\r\n\tdisplay: block;\r\n}\r\n.commentHead {\r\n\ttext-align: center;\r\n}\r\nform {\r\n\ttext-align: center;\r\n}\r\n.comments input[name=\"comment\"]{\r\n\tmargin: auto;\r\n\twidth: 50%;\r\n\tmargin-bottom: 30px;\r\n}\r\n.list-group-item-heading{\r\n\tcolor:#a90606;\r\n}\r\n.points {\r\n\twidth: 5%;\r\n\tfloat:left;\r\n}\r\n.points span {\r\n\tdisplay: block;\r\n\ttext-align: center;\r\n}\r\n.commentView {\r\nwidth: 95%;\r\nfloat: right;\r\nmargin: auto;\r\nheight: 100%;\r\nmargin-top: 10px;\r\n}\r\n.commentList {\r\nmargin-top: 1%;\r\nmin-height: 75px;\r\nfloat: left;\r\nwidth: 100%;\r\n}\r\n.commentList:after {\r\n\tclear: both;\r\n\tdisplay: block;\r\n\tcontent: \"\";\r\n\twidth: 100%;\r\n}"
 
 /***/ }),
 
@@ -1127,7 +1127,7 @@ module.exports = "<nav class=\"nav navbar navbar-default\">\n\t<div class=\"cont
 /***/ 693:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"post\" class=\"postView\">\n<section class=\"postContent\">\n<h2>{{post[0][0].title}}</h2>\n<p>{{post[0][0].content}}</p>\n</section>\n<div class=\"postLine\"></div>\n<section class=\"comments\"><h4>Comments</h4>\n<form (submit)=\"onCommentSubmit()\">\n\t<input type=\"text\" [(ngModel)]=\"comment\" name=\"comment\" placeholder=\"Add comment...\">\n\t<input type=\"submit\" name=\"submit\" class=\"btn btn-default\">\n</form>\n\t<div *ngFor=\"let comment of post[1]\" class=\"list-group\">\t\t\n      <li class=\"list-group-item\">\n      <h4 class=\"list-group-item-heading\">{{comment.authorUsername}}\n\n      <small>{{comment.date}}</small>\n      </h4>\n      <span class=\"badge\" (click)=\"incrementVotes(comment)\">▲</span>\n      <span class=\"badge\">{{comment.votes}}</span>\n      <span class=\"badge\" (click)=\"decrementVotes(comment)\">▼</span>\n      <p class=\"list-group-item-text\">{{comment.comment}}</p>\n    </li> \n</div>\n<div class=\"lastLine\"></div>\n</section>\n</div> "
+module.exports = "<div *ngIf=\"post\" class=\"postView\">\n<section class=\"postContent\">\n<h2>{{post[0][0].title}}</h2>\n<p>{{post[0][0].content}}</p>\n</section>\n<div class=\"postLine\"></div>\n<section class=\"comments\"><h4 class=\"commentHead\">Comments</h4>\n<form (submit)=\"onCommentSubmit()\">\n\t<input type=\"text\" [(ngModel)]=\"comment\" name=\"comment\" placeholder=\"Add comment...\">\n\t<input type=\"submit\" name=\"submit\" class=\"btn btn-default\">\n</form>\n\t<div *ngFor=\"let comment of post[1]\" class=\"list-group\">\t\t\n      <li class=\"list-group-item\">\n      <h4 class=\"list-group-item-heading\">{{comment.authorUsername}}\n\n      <small>{{comment.date}}</small>\n      </h4>\n      <span class=\"badge\" (click)=\"incrementVotes(comment)\">▲</span>\n      <span class=\"badge\">{{comment.votes}}</span>\n      <span class=\"badge\" (click)=\"decrementVotes(comment)\">▼</span>\n      <p class=\"list-group-item-text\">{{comment.comment}}</p>\n    </li> \n</div>\n<div class=\"lastLine\"></div>\n</section>\n</div> "
 
 /***/ }),
 

@@ -46,11 +46,11 @@ comment: string;
   this.comment = "";
   }
 decrementVotes(comment){
-	let userID = this.authService.getID();
   if(!this.authService.loggedIn()){
     this.flashMessage.show('Log in to add vote', {cssClass: 'alert-success', timeout: 3000});
     return false;
   }
+  let userID = this.authService.getID();
 	if(this.validateService.alreadyVoted(comment, userID)){
 	this.flashMessage.show('Already voted', {cssClass: 'alert-success', timeout: 3000});
 	return false;
@@ -64,11 +64,11 @@ decrementVotes(comment){
 	});	
 }
 incrementVotes(comment){
-	let userID = this.authService.getID();
   if(!this.authService.loggedIn()){
     this.flashMessage.show('Log in to add vote', {cssClass: 'alert-success', timeout: 3000});
     return false;
   }
+  let userID = this.authService.getID();
 	if(this.validateService.alreadyVoted(comment,userID)){
 	this.flashMessage.show('Already voted', {cssClass: 'alert-success', timeout: 3000});
 	return false;

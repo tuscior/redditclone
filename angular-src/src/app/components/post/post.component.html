@@ -4,7 +4,7 @@
 <p>{{post[0][0].content}}</p>
 </section>
 <div class="postLine"></div>
-<section class="comments"><h4>Comments</h4>
+<section class="comments"><h4 class="commentHead">Comments</h4>
 <form (submit)="onCommentSubmit()">
 	<input type="text" [(ngModel)]="comment" name="comment" placeholder="Add comment...">
 	<input type="submit" name="submit" class="btn btn-default">
