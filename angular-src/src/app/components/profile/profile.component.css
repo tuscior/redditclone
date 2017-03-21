@@ -1,0 +1,8 @@
+.profileLink {
+	color: #989b9f;
+	text-decoration: none;
+	cursor: pointer;
+}
+.profileLink:hover{
+	color: #a90606;
+}

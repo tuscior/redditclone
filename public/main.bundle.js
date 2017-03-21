@@ -797,6 +797,9 @@ var ProfileComponent = (function () {
             }
         });
     };
+    ProfileComponent.prototype.onSelectPost = function (post) {
+        this.router.navigate(['post/', post._id]);
+    };
     ProfileComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-profile',
@@ -1068,7 +1071,7 @@ module.exports = "li {\r\n\tlist-style: none;\r\n}\r\n\r\n.postView {\r\n\twidth
 /***/ 685:
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".profileLink {\r\n\tcolor: #989b9f;\r\n\ttext-decoration: none;\r\n\tcursor: pointer;\r\n}\r\n.profileLink:hover{\r\n\tcolor: #a90606;\r\n}"
 
 /***/ }),
 
@@ -1131,7 +1134,7 @@ module.exports = "<div *ngIf=\"post\" class=\"postView\">\n<section class=\"post
 /***/ 694:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"profile\">\n\t<h2 class=\"page-header\">{{profile[0][0].username}}</h2>\n\t<ul class=\"list-group\" *ngFor=\"let post of profile[1]\">\n\t\t<li class=\"list-group-item\">{{post.title}}<a class=\"btn btn-danger\" (click)=\"onDeleteClick(post._id)\">delete</a></li>\n\t</ul>\n</div>\t"
+module.exports = "<div *ngIf=\"profile\">\n\t<h2 class=\"page-header\">{{profile[0][0].username}}</h2>\n\t<ul class=\"list-group\" *ngFor=\"let post of profile[1]\">\n\t\t<li class=\"list-group-item\"><a class=\"profileLink\" (click)=\"onSelectPost(post)\">{{post.title}}</a><a class=\"btn btn-danger\" (click)=\"onDeleteClick(post._id)\">delete</a></li>\n\t</ul>\n</div>\t"
 
 /***/ }),
 

@@ -36,5 +36,8 @@ onDeleteClick(id){
     }
   });
 }
+onSelectPost(post){
+this.router.navigate(['post/', post._id]);
+  }
 
 }
