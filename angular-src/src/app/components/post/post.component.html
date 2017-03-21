@@ -15,9 +15,9 @@
 
       <small>{{comment.date}}</small>
       </h4>
-      <span class="badge" (click)="incrementVotes(comment)">▲</span>
+      <span class="badge arrow" (click)="incrementVotes(comment)">▲</span>
       <span class="badge">{{comment.votes}}</span>
-      <span class="badge" (click)="decrementVotes(comment)">▼</span>
+      <span class="badge arrow" (click)="decrementVotes(comment)">▼</span>
       <p class="list-group-item-text">{{comment.comment}}</p>
     </li> 
 </div>
